@@ -6,6 +6,15 @@ my amazing CA, Temoor Tanveer and the legendary Eric Gao.
 
 How to Run:
 Run only the file called HeaderFootball.py
+There are 2 accounts you can use.
+
+Account1:
+User: mtelsaye
+Pass: mtelsaye
+
+Account2:
+User: mtelsaye1
+Pass: mtelsaye
 
 How to download 
 Download the most updated version of python
