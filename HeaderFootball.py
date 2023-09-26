@@ -460,8 +460,8 @@ pygame.init()
 info = pygame.display.Info()
 WIDTH = 1536
 HEIGHT = 864
-COMM = chatCommClass.chatComm("86.36.42.136", 15112)
-COMM.startConnection()
+# COMM = chatCommClass.chatComm("86.36.42.136", 15112)
+# COMM.startConnection()
 WHITE = (255, 255, 255)
 BLACK = (0,0,0)
 WIN = pygame.display.set_mode((1536, 804))
@@ -1187,68 +1187,68 @@ def main(loggedIn = False, currentUsername = ""):
     passwordBoxClicked = False
     if not loggedIn:
         drawLogin(currentUsername,currentPassword, usernameBoxClicked, passwordBoxClicked)
-        while loginScreen:
-            clock.tick(60)
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    return
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    x,y = event.pos
-                    if USERNAME_RECT.collidepoint(x,y):
-                        usernameBoxClicked = True
-                        passwordBoxClicked = False
+        # while loginScreen:
+        #     clock.tick(60)
+        #     for event in pygame.event.get():
+        #         if event.type == pygame.QUIT:
+        #             pygame.quit()
+        #             return
+        #         elif event.type == pygame.MOUSEBUTTONDOWN:
+        #             x,y = event.pos
+        #             if USERNAME_RECT.collidepoint(x,y):
+        #                 usernameBoxClicked = True
+        #                 passwordBoxClicked = False
                         
-                    elif PASSWORD_RECT.collidepoint(x,y):
-                        usernameBoxClicked = False
-                        passwordBoxClicked = True
+        #             elif PASSWORD_RECT.collidepoint(x,y):
+        #                 usernameBoxClicked = False
+        #                 passwordBoxClicked = True
                         
-                    else:
-                        usernameBoxClicked = False
-                        passwordBoxClicked = False
+        #             else:
+        #                 usernameBoxClicked = False
+        #                 passwordBoxClicked = False
 
-                    if LOGIN_BUTTON_RECT.collidepoint(x,y):
-                        BUTTON_SOUND.play()
-                        if COMM.login(currentUsername, currentPassword):
-                            loginScreen = False
-                            WIN.blit(WELCOME_LOGIN, (WIDTH//2 - WELCOME_LOGIN.get_width()//2, 500))
-                            pygame.display.update()
-                            time.sleep(1)
-                        else:
-                            drawLogin(currentUsername,currentPassword, usernameBoxClicked, passwordBoxClicked)
-                            WIN.blit(INCORRECT_LOGIN, (WIDTH//2 - INCORRECT_LOGIN.get_width()//2, 500))
-                            pygame.display.update()
-                            break
-                    drawLogin(currentUsername,currentPassword, usernameBoxClicked, passwordBoxClicked)
+        #             if LOGIN_BUTTON_RECT.collidepoint(x,y):
+        #                 BUTTON_SOUND.play()
+        #                 if COMM.login(currentUsername, currentPassword):
+        #                     loginScreen = False
+        #                     WIN.blit(WELCOME_LOGIN, (WIDTH//2 - WELCOME_LOGIN.get_width()//2, 500))
+        #                     pygame.display.update()
+        #                     time.sleep(1)
+        #                 else:
+        #                     drawLogin(currentUsername,currentPassword, usernameBoxClicked, passwordBoxClicked)
+        #                     WIN.blit(INCORRECT_LOGIN, (WIDTH//2 - INCORRECT_LOGIN.get_width()//2, 500))
+        #                     pygame.display.update()
+        #                     break
+        #             drawLogin(currentUsername,currentPassword, usernameBoxClicked, passwordBoxClicked)
 
-                elif event.type == pygame.KEYDOWN :
-                    if event.key != pygame.K_RETURN and event.key != pygame.K_TAB:
-                        if usernameBoxClicked:
-                            if event.key == pygame.K_BACKSPACE and len(currentUsername) > 0:
-                                currentUsername = currentUsername[:-1]
-                            elif len(currentUsername) < 10 and not event.key == pygame.K_BACKSPACE:
-                                currentUsername += event.unicode
-                        elif passwordBoxClicked:
-                            if event.key == pygame.K_BACKSPACE and len(currentPassword) > 0:
-                                currentPassword = currentPassword[:-1]
-                            elif len(currentPassword) < 10 and not event.key == pygame.K_BACKSPACE:
-                                currentPassword += event.unicode
-                        drawLogin(currentUsername,currentPassword, usernameBoxClicked, passwordBoxClicked)
-                    else:
-                        if usernameBoxClicked:
-                            usernameBoxClicked = False
-                            passwordBoxClicked = True
-                            drawLogin(currentUsername,currentPassword, usernameBoxClicked, passwordBoxClicked)
-                        elif COMM.login(currentUsername, currentPassword):
-                            loggedIn = True
-                            loginScreen = False
-                            WIN.blit(WELCOME_LOGIN, (WIDTH//2 - WELCOME_LOGIN.get_width()//2, 500))
-                            pygame.display.update()
-                            time.sleep(1)
-                        else:
-                            drawLogin(currentUsername,currentPassword, usernameBoxClicked, passwordBoxClicked)
-                            WIN.blit(INCORRECT_LOGIN, (WIDTH//2 - INCORRECT_LOGIN.get_width()//2, 500))
-                            pygame.display.update()
+        #         elif event.type == pygame.KEYDOWN :
+        #             if event.key != pygame.K_RETURN and event.key != pygame.K_TAB:
+        #                 if usernameBoxClicked:
+        #                     if event.key == pygame.K_BACKSPACE and len(currentUsername) > 0:
+        #                         currentUsername = currentUsername[:-1]
+        #                     elif len(currentUsername) < 10 and not event.key == pygame.K_BACKSPACE:
+        #                         currentUsername += event.unicode
+        #                 elif passwordBoxClicked:
+        #                     if event.key == pygame.K_BACKSPACE and len(currentPassword) > 0:
+        #                         currentPassword = currentPassword[:-1]
+        #                     elif len(currentPassword) < 10 and not event.key == pygame.K_BACKSPACE:
+        #                         currentPassword += event.unicode
+        #                 drawLogin(currentUsername,currentPassword, usernameBoxClicked, passwordBoxClicked)
+        #             else:
+        #                 if usernameBoxClicked:
+        #                     usernameBoxClicked = False
+        #                     passwordBoxClicked = True
+        #                     drawLogin(currentUsername,currentPassword, usernameBoxClicked, passwordBoxClicked)
+        #                 elif COMM.login(currentUsername, currentPassword):
+        #                     loggedIn = True
+        #                     loginScreen = False
+        #                     WIN.blit(WELCOME_LOGIN, (WIDTH//2 - WELCOME_LOGIN.get_width()//2, 500))
+        #                     pygame.display.update()
+        #                     time.sleep(1)
+        #                 else:
+        #                     drawLogin(currentUsername,currentPassword, usernameBoxClicked, passwordBoxClicked)
+        #                     WIN.blit(INCORRECT_LOGIN, (WIDTH//2 - INCORRECT_LOGIN.get_width()//2, 500))
+        #                     pygame.display.update()
                               
     drawMenu()
     inviteLastChecked = 0
@@ -1275,7 +1275,7 @@ def main(loggedIn = False, currentUsername = ""):
 
                 if distFromPlayOnline <= 100:
                     BUTTON_SOUND.play()
-                    playOnlineMenu = True
+                    playOnlineMenu = False  #True  - Changed so that game can be played when server is down
                     
                 elif distFromInfo <= 50:
                     informationClicked = True
@@ -1457,22 +1457,22 @@ def main(loggedIn = False, currentUsername = ""):
                             if check[1]:
                                 inviteButton = True
                                 
-                if abs(menuTick - inviteLastChecked) == 60 and waiting:
-                    inviteLastChecked = menuTick
-                    reply = getReplyInvitation(currentFriend)
-                    if reply == "accepted":
-                        playOnline = True
-                        playerNum = 1
-                        menu = False
-                        runOnline = False
-                    elif reply == "rejected":
-                        waiting = False
-                        inviteRejectedString = pygame.font.Font('Berlin Sans FB Demi Bold.ttf', 30).render("Invite rejected by "+currentFriend+".", 1, (WHITE))
-                        COMM.sendMessage(currentFriend,"INVITE DONE")
-                        drawOnline(currentFriend,friendBoxClicked,waiting)
-                        WIN.blit(inviteRejectedString, (WIDTH//2 - inviteRejectedString.get_width()//2, 450))
-                        pygame.display.update()
-                elif abs(menuTick - inviteLastChecked) == 60:
+                # if abs(menuTick - inviteLastChecked) == 60 and waiting:
+                #     inviteLastChecked = menuTick
+                #     reply = getReplyInvitation(currentFriend)
+                #     if reply == "accepted":
+                #         playOnline = True
+                #         playerNum = 1
+                #         menu = False
+                #         runOnline = False
+                #     elif reply == "rejected":
+                #         waiting = False
+                #         inviteRejectedString = pygame.font.Font('Berlin Sans FB Demi Bold.ttf', 30).render("Invite rejected by "+currentFriend+".", 1, (WHITE))
+                #         COMM.sendMessage(currentFriend,"INVITE DONE")
+                #         drawOnline(currentFriend,friendBoxClicked,waiting)
+                #         WIN.blit(inviteRejectedString, (WIDTH//2 - inviteRejectedString.get_width()//2, 450))
+                #         pygame.display.update()
+                # elif abs(menuTick - inviteLastChecked) == 60:
                     inviteLastChecked = menuTick
                 menuTick += 1  
                 
@@ -1497,35 +1497,35 @@ def main(loggedIn = False, currentUsername = ""):
                                 clicked = True
                                 drawMenu()       
                             
-        if abs(menuTick - inviteLastChecked) == 60:
-            inviteLastChecked = menuTick
-            opponentName = checkForInvite()
-            if opponentName != "Nobody":
-                runInvitation = True
-                INVITE_SOUND.play()
-                drawGameInvite(opponentName)
-            else:
-                runInvitation = False
-            while runInvitation:
-                clock.tick(60)
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        pygame.quit()
-                        return
-                    elif event.type == pygame.MOUSEBUTTONDOWN:
-                        x,y = event.pos
-                        if ACCEPT_BUTTON_RECT.collidepoint(x,y):
-                            BUTTON_SOUND.play()
-                            COMM.sendMessage(opponentName,"INVITE ACCEPTED")
-                            playOnline = True
-                            playerNum = 2
-                            menu = False
-                            runInvitation = False
-                        elif REJECT_BUTTON_RECT.collidepoint(x,y):
-                            BUTTON_SOUND.play()
-                            runInvitation = False
-                            COMM.sendMessage(opponentName,"INVITE REJECTED")
-                            drawMenu()
+        # if abs(menuTick - inviteLastChecked) == 60:
+        #     inviteLastChecked = menuTick
+        #     opponentName = checkForInvite()
+        #     if opponentName != "Nobody":
+        #         runInvitation = True
+        #         INVITE_SOUND.play()
+        #         drawGameInvite(opponentName)
+        #     else:
+        #         runInvitation = False
+        #     while runInvitation:
+        #         clock.tick(60)
+        #         for event in pygame.event.get():
+        #             if event.type == pygame.QUIT:
+        #                 pygame.quit()
+        #                 return
+        #             elif event.type == pygame.MOUSEBUTTONDOWN:
+        #                 x,y = event.pos
+        #                 if ACCEPT_BUTTON_RECT.collidepoint(x,y):
+        #                     BUTTON_SOUND.play()
+        #                     COMM.sendMessage(opponentName,"INVITE ACCEPTED")
+        #                     playOnline = True
+        #                     playerNum = 2
+        #                     menu = False
+        #                     runInvitation = False
+        #                 elif REJECT_BUTTON_RECT.collidepoint(x,y):
+        #                     BUTTON_SOUND.play()
+        #                     runInvitation = False
+        #                     COMM.sendMessage(opponentName,"INVITE REJECTED")
+        #                     drawMenu()
         menuTick += 1                
                             
                             
