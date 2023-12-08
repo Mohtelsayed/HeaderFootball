@@ -1414,7 +1414,7 @@ def main(loggedIn = False, currentUsername = ""):
                             
                         elif INVITE_BUTTON_RECT.collidepoint(x,y) and not waiting:
                             BUTTON_SOUND.play()
-                            check = (checkFriend(currentFriend,currentUsername))
+##                            check = (checkFriend(currentFriend,currentUsername))
                             if check[0]:
                                 waiting = True
                             if check[1]:
@@ -1451,7 +1451,7 @@ def main(loggedIn = False, currentUsername = ""):
                                 drawOnline(currentFriend,friendBoxClicked,waiting)
                         elif not waiting:
                             friendBoxClicked = False
-                            check = (checkFriend(currentFriend,currentUsername))
+##                            check = (checkFriend(currentFriend,currentUsername))
                             if check[0]:
                                 waiting = True
                             if check[1]:
@@ -1479,7 +1479,8 @@ def main(loggedIn = False, currentUsername = ""):
                             
                     
         if abs(menuTick - inviteLastChecked) == 60:
-            requests = COMM.getRequests()
+##            requests = COMM.getRequests()
+            requests = []  ## REPLACEMENT
             for request in requests:
                 clicked = False
                 drawFriendRequest(request)
